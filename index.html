@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprende Inglés con el Caimán</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     ENCABEZADO Y NAVEGACIÓN
+     ════════════════════════════════════════════════════════ -->
+<header>
+  <div class="header-logos">
+
+    <!-- Logo del colegio Pitágoras II
+         src="assets/pitagoras-logo.png"
+         alt="Unidad Educativa Maestro Pitágoras II"
+         onerror="this.style.display='none'">
+
+    <!-- Logo del caimán -->
+    <img class="logo-caiman" src="assets/caiman-logo.png" alt="Logo Caimán">
+
+    <span class="header-title">Aprende Inglés con el Caimán</span>
+  </div>
+
+  <!-- Botón hamburguesa para móvil -->
+  <button id="nav-toggle" aria-label="Menú">☰</button>
+
+  <nav>
+    <ul id="main-nav">
+      <li><a href="#abecedario">Abecedario</a></li>
+      <li><a href="#numeros">Números</a></li>
+      <li><a href="#verb-to-be">Verbo To Be</a></li>
+      <li><a href="#adjetivos">Adjetivos</a></li>
+      <li><a href="#pronombres">Pronombres</a></li>
+      <li><a href="#verbos">Verbos</a></li>
+      <li><a href="#juegos">🎮 Juegos</a></li>
+      <li><a href="#videos">📺 Videos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ════════════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-texto">
+    <h1>¡Aprende Inglés!</h1>
+    <p>Abecedario, números, verbos, adjetivos, pronombres y juegos didácticos bilingües.</p>
+  </div>
+  <div class="hero-img">
+    <img src="assets/caiman-thinking.png" alt="Profe Caimán pensando">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     1. ABECEDARIO
+     ════════════════════════════════════════════════════════ -->
+<section id="abecedario">
+  <h2>🔤 Abecedario / Alphabet</h2>
+  <p>Pasa el cursor (o toca) cada tarjeta para ver la traducción.</p>
+  <div id="abc-grid"></div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     2. NÚMEROS
+     ════════════════════════════════════════════════════════ -->
+<section id="numeros">
+  <h2>🔢 Números / Numbers (1–1000)</h2>
+  <div class="pestañas" id="decena-tabs"></div>
+  <div id="numeros-grid"></div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     3. VERBO TO BE
+     ════════════════════════════════════════════════════════ -->
+<section id="verb-to-be">
+  <h2>📘 Verbo To Be</h2>
+
+  <h3>Presente (Present)</h3>
+  <table>
+    <thead>
+      <tr><th>Pronoun</th><th>To Be</th><th>Ejemplo</th><th>Traducción</th></tr>
+    </thead>
+    <tbody id="tobe-present-body"></tbody>
+  </table>
+
+  <h3 style="margin-top:1.5rem">Pasado (Past)</h3>
+  <table>
+    <thead>
+      <tr><th>Pronoun</th><th>To Be</th><th>Ejemplo</th><th>Traducción</th></tr>
+    </thead>
+    <tbody id="tobe-past-body"></tbody>
+  </table>
+
+  <h3 style="margin-top:1.5rem">Forma negativa e interrogativa</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.5rem">
+    <div class="adj-tarjeta">
+      <div class="adj-en">❌ Negativa</div>
+      <div class="adj-ej">I am <b>not</b> a student.<br>She is <b>not</b> happy.<br>They were <b>not</b> here.</div>
+    </div>
+    <div class="adj-tarjeta">
+      <div class="adj-en">❓ Interrogativa</div>
+      <div class="adj-ej"><b>Am</b> I late?<br><b>Is</b> she your friend?<br><b>Were</b> they at home?</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     4. ADJETIVOS
+     ════════════════════════════════════════════════════════ -->
+<section id="adjetivos">
+  <h2>🌈 Adjetivos / Adjectives</h2>
+  <div class="filtros" id="adj-filtros"></div>
+  <div id="adj-grid"></div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     5. PRONOMBRES
+     ════════════════════════════════════════════════════════ -->
+<section id="pronombres">
+  <h2>👤 Pronombres / Pronouns</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Persona</th><th>Sujeto</th><th>Objeto</th>
+        <th>Adj. Posesivo</th><th>Pron. Posesivo</th><th>Reflexivo</th>
+      </tr>
+    </thead>
+    <tbody id="pron-body"></tbody>
+  </table>
+
+  <h3 style="margin-top:1.5rem">Ejemplos en contexto</h3>
+  <div class="carousel" id="pron-ejemplos"></div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     6. VERBOS
+     ════════════════════════════════════════════════════════ -->
+<section id="verbos">
+  <div class="caiman-seccion">
+    <img src="assets/caiman-reading.png" alt="Profe Caimán leyendo" class="caiman-deco">
+    <div>
+      <h2>📝 50 Verbos / Verbs</h2>
+      <p style="margin:0;color:var(--color-texto-suave)">¡El Profe Caimán ya leyó todos los verbos! Ahora te toca a ti.</p>
+    </div>
+  </div>
+  <input type="search" id="verbo-buscar" placeholder="Buscar verbo en inglés o español…">
+  <div id="verbos-tabla"></div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     7. JUEGOS
+     ════════════════════════════════════════════════════════ -->
+<section id="juegos">
+  <h2>🎮 Juegos Didácticos</h2>
+
+  <!-- Menú de juegos -->
+  <div class="juegos-menu">
+    <button class="btn-juego" data-juego="numeros">
+      <span class="icono">🔢</span> Quiz Números
+    </button>
+    <button class="btn-juego" data-juego="memorama">
+      <span class="icono">🧩</span> Memorama EN/ES
+    </button>
+    <button class="btn-juego" data-juego="tense">
+      <span class="icono">✍️</span> Pasado Verbos
+    </button>
+    <button class="btn-juego" data-juego="tobe">
+      <span class="icono">📘</span> Completa To Be
+    </button>
+    <button class="btn-juego" data-juego="adjetivos">
+      <span class="icono">🌈</span> Opuestos Adj.
+    </button>
+    <button class="btn-juego" data-juego="pronombres">
+      <span class="icono">👤</span> Pronombres
+    </button>
+  </div>
+
+  <!-- Escena: Quiz Números -->
+  <div class="escena-juego" id="game-numeros">
+    <div class="juego-top">
+      <h3>🔢 Quiz de Números</h3>
+      <button class="btn-cerrar" data-juego="numeros">✕ Cerrar</button>
+    </div>
+    <div class="juego-progreso" id="nq-progreso"></div>
+    <div class="juego-pregunta" id="nq-pregunta"></div>
+    <div class="opciones" id="nq-opciones"></div>
+    <div class="juego-fb" id="nq-fb"></div>
+  </div>
+
+  <!-- Escena: Memorama -->
+  <div class="escena-juego" id="game-memorama">
+    <div class="juego-top">
+      <h3>🧩 Memorama EN/ES</h3>
+      <button class="btn-cerrar" data-juego="memorama">✕ Cerrar</button>
+    </div>
+    <div>Movimientos: <span class="juego-score" id="memo-movs">0</span> |
+      Pares: <span id="memo-pares">0</span>/8</div>
+    <div id="memo-grid"></div>
+  </div>
+
+  <!-- Escena: Pasado Verbos -->
+  <div class="escena-juego" id="game-tense">
+    <div class="juego-top">
+      <h3>✍️ Escribe el pasado</h3>
+      <button class="btn-cerrar" data-juego="tense">✕ Cerrar</button>
+    </div>
+    <div class="juego-progreso" id="tense-progreso"></div>
+    <div class="juego-pregunta" id="tense-pregunta"></div>
+    <div class="juego-hint" id="tense-hint"></div>
+    <div id="tense-input-wrap">
+      <input type="text" id="tense-input" placeholder="past tense…">
+      <button class="btn-verificar" id="tense-check">Verificar</button>
+    </div>
+    <div class="juego-fb" id="tense-fb"></div>
+  </div>
+
+  <!-- Escena: Completa To Be -->
+  <div class="escena-juego" id="game-tobe">
+    <div class="juego-top">
+      <h3>📘 Completa con To Be</h3>
+      <button class="btn-cerrar" data-juego="tobe">✕ Cerrar</button>
+    </div>
+    <div class="juego-progreso" id="tb-progreso"></div>
+    <div class="juego-pregunta" id="tb-pregunta"></div>
+    <div class="juego-hint" id="tb-hint"></div>
+    <div class="opciones" id="tb-opciones"></div>
+    <div class="juego-fb" id="tb-fb"></div>
+  </div>
+
+  <!-- Escena: Opuestos Adjetivos -->
+  <div class="escena-juego" id="game-adjetivos">
+    <div class="juego-top">
+      <h3>🌈 ¿Cuál es el opuesto?</h3>
+      <button class="btn-cerrar" data-juego="adjetivos">✕ Cerrar</button>
+    </div>
+    <div class="juego-progreso" id="adj-progreso"></div>
+    <div class="juego-pregunta" id="adj-pregunta"></div>
+    <div class="opciones" id="adj-opciones"></div>
+    <div class="juego-fb" id="adj-fb"></div>
+  </div>
+
+  <!-- Escena: Pronombres -->
+  <div class="escena-juego" id="game-pronombres">
+    <div class="juego-top">
+      <h3>👤 Elige el Pronombre</h3>
+      <button class="btn-cerrar" data-juego="pronombres">✕ Cerrar</button>
+    </div>
+    <div class="juego-progreso" id="pr-progreso"></div>
+    <div class="juego-pregunta" id="pr-pregunta"></div>
+    <div class="juego-hint" id="pr-hint"></div>
+    <div class="opciones" id="pr-opciones"></div>
+    <div class="juego-fb" id="pr-fb"></div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     8. VIDEOS
+     ════════════════════════════════════════════════════════ -->
+<section id="videos">
+  <h2>📺 Videos Educativos</h2>
+  <div class="filtros" id="video-filtros"></div>
+  <div id="videos-grid"></div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     CONTACTO
+     ════════════════════════════════════════════════════════ -->
+<section id="contacto">
+  <h2>📬 Contacto</h2>
+  <div class="contacto-info">
+    <div class="contacto-bloque">
+      <div class="etiqueta">Autor</div>
+      <!-- CÓMO CAMBIAR: edita el nombre aquí -->
+      <div class="valor">Iker Andrade Justiniano</div>
+    </div>
+    <div class="contacto-bloque">
+      <div class="etiqueta">Correo electrónico</div>
+      <!-- CÓMO CAMBIAR: edita la dirección aquí -->
+      <div class="valor">
+        <a href="mailto:ikerandradejustiniano@gmail.com">
+          ikerandradejustiniano@gmail.com
+        </a>
+      </div>
+    </div>
+    <div class="contacto-bloque">
+      <div class="etiqueta">Institución</div>
+      <div class="valor">Unidad Educativa Maestro Pitágoras II</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════════════ -->
+<footer>
+  <p>© 2026 Aprende Inglés con el Caimán · Iker Andrade Justiniano</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

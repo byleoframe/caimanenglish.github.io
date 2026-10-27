@@ -1,0 +1,395 @@
+/* ============================================================
+   APRENDE INGLÉS CON EL CAIMÁN — Hoja de estilos
+   ------------------------------------------------------------
+   CÓMO PERSONALIZAR FÁCILMENTE:
+   • Colores  → cambia los valores en :root (líneas 15-25)
+   • Fuente   → cambia --fuente (línea 26)
+   • Tamaños  → cambia --texto-base (línea 27)
+   ============================================================ */
+
+/* ──────────────────────────────────────────────────────────
+   1. VARIABLES DE DISEÑO — cambia aquí para afectar todo
+   ────────────────────────────────────────────────────────── */
+:root {
+  /* Colores principales */
+  --color-fondo:       #f5f0e8;   /* fondo crema del papel     */
+  --color-encabezado:  #1a3a2a;   /* verde oscuro (header/nav) */
+  --color-acento:      #2e7d50;   /* verde medio (botones)     */
+  --color-acento2:     #e8813a;   /* naranja (resaltados)      */
+  --color-texto:       #1e1e1e;   /* texto general             */
+  --color-texto-claro: #ffffff;   /* texto sobre fondos oscuros*/
+  --color-tarjeta:     #ffffff;   /* fondo de tarjetas         */
+  --color-borde:       #c8b89a;   /* bordes suaves             */
+  --color-correcto:    #2e7d50;   /* respuesta correcta        */
+  --color-incorrecto:  #c0392b;   /* respuesta incorrecta      */
+
+  /* Tipografía */
+  --fuente:            'Nunito', sans-serif;
+  --texto-base:        1rem;      /* 1rem = 16px */
+
+  /* Espaciado y redondeos */
+  --radio:             10px;
+  --sombra:            0 2px 12px rgba(0,0,0,.12);
+}
+
+/* ──────────────────────────────────────────────────────────
+   2. RESET BÁSICO
+   ────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--fuente);
+  font-size: var(--texto-base);
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+}
+img { max-width: 100%; display: block; }
+a  { color: var(--color-acento); text-decoration: none; }
+a:hover { text-decoration: underline; }
+table { border-collapse: collapse; width: 100%; }
+th, td { padding: .55rem .8rem; border: 1px solid var(--color-borde); text-align: left; }
+th { background: var(--color-encabezado); color: var(--color-texto-claro); }
+tr:nth-child(even) { background: #f0ece2; }
+
+/* ──────────────────────────────────────────────────────────
+   3. ENCABEZADO Y NAVEGACIÓN
+   ────────────────────────────────────────────────────────── */
+header {
+  background: var(--color-encabezado);
+  color: var(--color-texto-claro);
+  padding: .75rem 1.5rem;
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem;
+}
+.header-logos {
+  display: flex; align-items: center; gap: .75rem;
+}
+.logo-caiman  { height: 52px; width: auto; border-radius: 6px; }
+.logo-colegio { height: 52px; width: auto; border-radius: 6px;
+                /* Si no tienes el logo, esta imagen no se muestra */
+                display: block; }
+.header-title {
+  font-size: 1.15rem; font-weight: 700; white-space: nowrap;
+}
+nav ul {
+  list-style: none; display: flex; flex-wrap: wrap; gap: .3rem;
+}
+nav a {
+  color: var(--color-texto-claro); font-weight: 600;
+  padding: .3rem .65rem; border-radius: 6px; font-size: .85rem;
+  transition: background .2s;
+}
+nav a:hover { background: var(--color-acento); text-decoration: none; }
+
+/* Menú hamburguesa (móvil) */
+#nav-toggle {
+  display: none; background: none; border: 2px solid var(--color-texto-claro);
+  color: var(--color-texto-claro); font-size: 1.3rem; border-radius: 6px;
+  padding: .2rem .5rem; cursor: pointer;
+}
+@media (max-width: 720px) {
+  #nav-toggle { display: block; }
+  nav { width: 100%; }
+  nav ul { display: none; flex-direction: column; background: var(--color-encabezado); padding: .5rem; }
+  nav ul.abierto { display: flex; }
+}
+
+/* ──────────────────────────────────────────────────────────
+   4. HERO (sección de bienvenida)
+   ────────────────────────────────────────────────────────── */
+.hero {
+  display: flex; align-items: center; gap: 2rem;
+  padding: 3rem 2rem; max-width: 900px; margin: 0 auto;
+}
+.hero-texto h1 { font-size: 2.2rem; color: var(--color-encabezado); margin-bottom: .5rem; }
+.hero-texto p  { font-size: 1.1rem; color: #444; }
+.hero-img { flex-shrink: 0; }
+.hero-img img  { width: 220px; border-radius: 16px; }
+@media (max-width: 600px) {
+  .hero { flex-direction: column; text-align: center; }
+  .hero-img img { width: 150px; }
+}
+
+/* ──────────────────────────────────────────────────────────
+   5. SECCIONES GENERALES
+   ────────────────────────────────────────────────────────── */
+section { padding: 2.5rem 1.5rem; max-width: 1000px; margin: 0 auto; }
+section:nth-child(even) { background: #eae4d5; border-radius: var(--radio); }
+h2 {
+  font-size: 1.7rem; color: var(--color-encabezado);
+  border-left: 5px solid var(--color-acento2); padding-left: .6rem;
+  margin-bottom: 1.2rem;
+}
+h3 { font-size: 1.15rem; color: var(--color-encabezado); margin: 1rem 0 .5rem; }
+
+/* ──────────────────────────────────────────────────────────
+   6. ABECEDARIO — tarjetas con flip 3D
+   ────────────────────────────────────────────────────────── */
+#abc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: .8rem;
+}
+.flip-card {
+  height: 110px; perspective: 600px; cursor: pointer;
+}
+.flip-inner {
+  width: 100%; height: 100%; position: relative;
+  transform-style: preserve-3d; transition: transform .5s;
+}
+.flip-card:hover .flip-inner,
+.flip-card.girada  .flip-inner { transform: rotateY(180deg); }
+.flip-frente, .flip-dorso {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border-radius: var(--radio); backface-visibility: hidden;
+  border: 2px solid var(--color-borde);
+}
+.flip-frente { background: var(--color-tarjeta); }
+.flip-dorso  { background: var(--color-acento); color: #fff; transform: rotateY(180deg); }
+.flip-frente .letra { font-size: 2.2rem; font-weight: 800; color: var(--color-encabezado); }
+.flip-frente .palabra { font-size: .75rem; }
+.flip-frente .pron { font-size: .65rem; color: var(--color-acento); font-style: italic; margin-top: .15rem; }
+.flip-dorso  .traduccion { font-size: .85rem; text-align: center; padding: .3rem; line-height: 1.5; }
+.pron-dorso { font-style: italic; opacity: .85; font-size: .8em; }
+
+/* ── Caiman decorativo en sección ──────────────────────────── */
+.caiman-seccion {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.caiman-deco {
+  width: 90px;
+  height: auto;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.15));
+}
+
+/* ──────────────────────────────────────────────────────────
+   7. NÚMEROS — pestañas por decena
+   ────────────────────────────────────────────────────────── */
+.pestañas { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+.pestaña {
+  padding: .35rem .8rem; border-radius: 20px; border: 2px solid var(--color-acento);
+  background: transparent; cursor: pointer; font-weight: 600; font-size: .85rem;
+  color: var(--color-acento); transition: background .2s, color .2s;
+}
+.pestaña.activa { background: var(--color-acento); color: #fff; }
+#numeros-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .6rem;
+}
+.num-tarjeta {
+  background: var(--color-tarjeta); border: 1px solid var(--color-borde);
+  border-radius: var(--radio); padding: .5rem .8rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.num-tarjeta .num     { font-size: 1.3rem; font-weight: 800; color: var(--color-acento2); }
+.num-tarjeta .num-en  { font-weight: 700; }
+.num-tarjeta .num-es  { font-size: .8rem; color: #666; }
+
+/* ──────────────────────────────────────────────────────────
+   8. VERBO TO BE, ADJETIVOS, PRONOMBRES
+   ────────────────────────────────────────────────────────── */
+.filtros { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+.btn-filtro {
+  padding: .3rem .75rem; border-radius: 20px; border: 2px solid var(--color-acento);
+  background: transparent; cursor: pointer; font-weight: 600; font-size: .82rem;
+  color: var(--color-acento); transition: background .2s;
+}
+.btn-filtro.activo { background: var(--color-acento); color: #fff; }
+
+#adj-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: .8rem;
+}
+.adj-tarjeta {
+  background: var(--color-tarjeta); border: 2px solid var(--color-borde);
+  border-radius: var(--radio); padding: .8rem 1rem;
+  box-shadow: var(--sombra);
+}
+.adj-tarjeta .adj-en { font-size: 1.1rem; font-weight: 800; color: var(--color-encabezado); }
+.adj-tarjeta .adj-es { font-size: .85rem; color: #555; }
+.adj-tarjeta .adj-ej { font-size: .78rem; font-style: italic; color: #777; margin-top: .3rem; }
+.adj-tarjeta .adj-op { font-size: .78rem; color: var(--color-acento2); }
+
+.carousel {
+  display: flex; overflow-x: auto; gap: 1rem; padding: .5rem 0;
+  scroll-snap-type: x mandatory;
+}
+.carousel-tarjeta {
+  flex-shrink: 0; scroll-snap-align: start; min-width: 220px;
+  background: var(--color-tarjeta); border: 2px solid var(--color-borde);
+  border-radius: var(--radio); padding: 1rem; box-shadow: var(--sombra);
+}
+.carousel-tarjeta .etiqueta { font-size: .75rem; font-weight: 700;
+  color: var(--color-acento); text-transform: uppercase; letter-spacing: 1px; }
+.carousel-tarjeta .en { font-size: 1.05rem; font-weight: 700; margin: .3rem 0; }
+.carousel-tarjeta .es { font-size: .88rem; color: #555; }
+
+/* ──────────────────────────────────────────────────────────
+   9. VERBOS — tabla con buscador
+   ────────────────────────────────────────────────────────── */
+#verbo-buscar {
+  width: 100%; max-width: 320px; padding: .5rem .8rem;
+  border: 2px solid var(--color-borde); border-radius: var(--radio);
+  font-size: 1rem; margin-bottom: 1rem;
+}
+#verbo-buscar:focus { outline: 2px solid var(--color-acento); border-color: var(--color-acento); }
+#verbos-tabla { overflow-x: auto; }
+
+/* ──────────────────────────────────────────────────────────
+   10. JUEGOS
+   ────────────────────────────────────────────────────────── */
+.juegos-menu {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.btn-juego {
+  background: var(--color-encabezado); color: var(--color-texto-claro);
+  border: none; border-radius: var(--radio); padding: 1rem .75rem;
+  cursor: pointer; font-size: .95rem; font-weight: 700;
+  display: flex; flex-direction: column; align-items: center; gap: .4rem;
+  transition: background .2s, transform .1s;
+}
+.btn-juego:hover { background: var(--color-acento); transform: translateY(-2px); }
+.btn-juego .icono { font-size: 1.8rem; }
+
+.escena-juego {
+  display: none; background: var(--color-tarjeta); border-radius: var(--radio);
+  padding: 1.5rem; box-shadow: var(--sombra);
+}
+.escena-juego.activa { display: block; }
+.juego-top {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1rem; flex-wrap: wrap; gap: .5rem;
+}
+.juego-top h3 { margin: 0; }
+.btn-cerrar {
+  background: #c0392b; color: #fff; border: none; border-radius: 6px;
+  padding: .35rem .75rem; cursor: pointer; font-size: .9rem;
+}
+.juego-pregunta { font-size: 1.3rem; font-weight: 700; text-align: center;
+  margin: 1rem 0; color: var(--color-encabezado); }
+.juego-hint { font-size: .9rem; color: #666; text-align: center; margin-bottom: .8rem; }
+.opciones {
+  display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; max-width: 440px; margin: 0 auto;
+}
+.btn-opcion {
+  padding: .65rem 1rem; border: 2px solid var(--color-borde);
+  border-radius: var(--radio); background: #fff; cursor: pointer; font-size: 1rem;
+  transition: background .15s, border-color .15s;
+}
+.btn-opcion:hover  { background: #f0f0f0; }
+.btn-opcion.ok     { background: #d4edda; border-color: var(--color-correcto); }
+.btn-opcion.mal    { background: #f8d7da; border-color: var(--color-incorrecto); }
+.juego-fb {
+  text-align: center; font-size: 1.1rem; font-weight: 700; min-height: 1.5rem;
+  margin-top: .8rem;
+}
+.juego-fb.ok  { color: var(--color-correcto); }
+.juego-fb.mal { color: var(--color-incorrecto); }
+.juego-score  { font-weight: 700; }
+.juego-progreso { font-size: .85rem; color: #666; }
+
+/* Memorama */
+#memo-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: .5rem;
+  margin-top: 1rem;
+}
+.memo-carta {
+  aspect-ratio: 1; border-radius: var(--radio); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; font-weight: 700; text-align: center;
+  border: 2px solid var(--color-borde); background: var(--color-encabezado);
+  color: transparent; transition: all .25s; padding: .3rem;
+}
+.memo-carta.volteada {
+  background: var(--color-tarjeta); color: var(--color-texto);
+}
+.memo-carta.encontrada {
+  background: #d4edda; color: var(--color-correcto);
+  border-color: var(--color-correcto); cursor: default;
+}
+
+/* Escritura de verbos */
+#tense-input-wrap { display: flex; gap: .6rem; justify-content: center; margin: .8rem 0; }
+#tense-input {
+  padding: .5rem .8rem; font-size: 1rem; border: 2px solid var(--color-borde);
+  border-radius: var(--radio); width: 180px;
+}
+#tense-input:focus { outline: 2px solid var(--color-acento); }
+.btn-verificar {
+  background: var(--color-acento); color: #fff; border: none;
+  border-radius: var(--radio); padding: .5rem 1rem; cursor: pointer; font-size: 1rem;
+}
+
+/* Banner final */
+.banner-final {
+  text-align: center; padding: 1.5rem;
+  background: linear-gradient(135deg, var(--color-encabezado), var(--color-acento));
+  color: #fff; border-radius: var(--radio); margin-top: 1rem;
+}
+.banner-final h3 { font-size: 1.5rem; margin-bottom: .5rem; }
+.btn-reiniciar {
+  background: var(--color-acento2); color: #fff; border: none;
+  border-radius: var(--radio); padding: .6rem 1.4rem; cursor: pointer;
+  font-size: 1rem; font-weight: 700; margin-top: .8rem;
+}
+
+/* ──────────────────────────────────────────────────────────
+   11. VIDEOS
+   ────────────────────────────────────────────────────────── */
+#videos-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem;
+  margin-top: 1rem;
+}
+.video-tarjeta {
+  background: var(--color-tarjeta); border-radius: var(--radio);
+  box-shadow: var(--sombra); overflow: hidden; transition: transform .2s;
+}
+.video-tarjeta:hover { transform: translateY(-3px); }
+.video-tarjeta img {
+  width: 100%; height: 160px; object-fit: cover;
+}
+.video-info { padding: .75rem 1rem; }
+.video-info h4 { font-size: .95rem; color: var(--color-encabezado); margin-bottom: .3rem; }
+.video-info p  { font-size: .82rem; color: #666; }
+.video-info a  {
+  display: inline-block; margin-top: .5rem;
+  background: #c00; color: #fff; border-radius: 5px;
+  padding: .25rem .7rem; font-size: .82rem; font-weight: 700;
+}
+.video-info a:hover { background: #a00; text-decoration: none; }
+
+/* ──────────────────────────────────────────────────────────
+   12. SECCIÓN CONTACTO
+   ────────────────────────────────────────────────────────── */
+#contacto {
+  text-align: center; padding: 3rem 1.5rem;
+  background: var(--color-encabezado); color: var(--color-texto-claro);
+  border-radius: 0; max-width: 100%;
+}
+#contacto h2 {
+  color: var(--color-texto-claro); border-left-color: var(--color-acento2);
+  display: inline-block;
+}
+.contacto-info {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;
+  margin-top: 1.5rem;
+}
+.contacto-bloque { font-size: 1rem; }
+.contacto-bloque .etiqueta { font-size: .8rem; text-transform: uppercase;
+  letter-spacing: 1px; color: #aac; margin-bottom: .3rem; }
+.contacto-bloque .valor { font-size: 1.1rem; font-weight: 700; }
+.contacto-bloque a { color: var(--color-acento2); }
+
+/* ──────────────────────────────────────────────────────────
+   13. FOOTER
+   ────────────────────────────────────────────────────────── */
+footer {
+  text-align: center; padding: 1rem;
+  background: #111; color: #aaa; font-size: .82rem;
+}
